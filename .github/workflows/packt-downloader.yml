@@ -1,0 +1,20 @@
+name: Packt eBook downloader
+
+on:
+  workflow_dispatch:
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Download the ebooks
+        uses: isabryant/packtcli-docker/downloader@main
+        with:
+          src_folder: /github/workspace/_drafts/
+          dest_folder: /github/workspace/_drafts/
+          days_mask: Tue
+          dry_run: false
+          nb_days_ahead: 7
+          
