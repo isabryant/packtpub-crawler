@@ -11,7 +11,7 @@ jobs:
       
       - name: Create the config file on the fly
         run: |
-          ls -lah /github/workspace/
+          ls -lah 
           cp /github/workspace/config/prod_example.cfg /github/workspace/config/prod.cfg
           
           echo "Change the configuration files"
