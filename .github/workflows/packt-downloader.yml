@@ -9,6 +9,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: Create the config file on the fly
+        run: |
+          cp /github/workspace/config/prod_example.cfg /github/workspace/config/prod.cfg
+          
+          echo "Change the configuration files"
+          sed -i 's/PACKTPUB_EMAIL/myemail@gmail.com/' /github/workspace/config/prod.cfg
+          sed -i 's/PACKTPUB_PASSWORD/mypassword/' /github/workspace/config/prod.cfg
+          cat /github/workspace/config/prod.cfg
+      
       - name: Download the ebooks
         uses: isabryant/packtcli-docker/downloader@main
         with:
